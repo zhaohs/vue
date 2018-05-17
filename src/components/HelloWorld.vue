@@ -13,6 +13,12 @@
           停止
         </a>
       </li>
+
+      <li>
+        <a href="javacript:void(0)" v-on:click="restartButton">
+          重新开始
+        </a>
+      </li>
     </ul>
   </div>
 </template>
@@ -32,7 +38,6 @@ export default {
     startButton: function () {
     console.log('startButton')
       var me = this;
-      
       it = setInterval(
         function(){
           mis++;
@@ -48,6 +53,23 @@ export default {
     {
       console.log('stopButton')
       clearInterval(it)
+    },
+    restartButton: function() 
+    {
+      second =0;
+      mis = 0;
+      it = 0;
+      var me = this;
+      it = setInterval(
+        function(){
+          mis++;
+          if(mis == 999)
+          {
+            second++;
+            mis=0;
+          }
+          me.time = second +':' + mis;
+        }, 1)
     }
   }
   
